@@ -483,71 +483,57 @@ const App = () => {
             <div
               onMouseEnter={() => setHoveredArchitecture('image')}
               onMouseLeave={() => setHoveredArchitecture(null)}
-              className="relative w-full h-[440px] sm:h-[480px] flex items-center justify-center select-none"
+              className="relative w-full flex items-center justify-center select-none"
             >
               {/* Dual-Platform Suite View (Productions Dashboard Card) */}
-              <div className={`absolute inset-0 transition-all duration-500 transform ${!isScheduling ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}>
-                <div className="h-full w-full bg-[#1A1A1A] rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 shadow-[0_0_120px_rgba(0,0,0,0.8)] border border-white/5 flex flex-col justify-between hover:border-[#ff4a23]/30 hover:shadow-[0_0_120px_rgba(255,74,35,0.15)] transition-all cursor-pointer">
-                  <div>
-                    <div className="flex items-center justify-between mb-8 sm:mb-10">
-                      <div>
-                        <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter italic">Productions</h3>
-                        <p className="text-[10px] text-white/40 uppercase tracking-widest font-black mt-1">Dual-Platform Overview</p>
-                      </div>
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#ff4a23] rounded-full flex items-center justify-center text-white shadow-[0_0_20px_#ff4a23]">
-                        <Plus className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={3} />
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                      <div className="bg-[#262626] p-6 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] border-l-[6px] border-[#ff4a23] transition-transform hover:translate-y-[-4px]">
-                        <div className="flex justify-between items-start mb-4 sm:mb-6">
-                          <div className="flex flex-col">
-                            <span className="font-black text-lg sm:text-xl uppercase tracking-tighter italic">Apex Air Max</span>
-                            <span className="text-[10px] text-white/40 uppercase font-black tracking-widest mt-1">Apex Athletics</span>
-                          </div>
-                          <div className="bg-[#ff4a23] px-2.5 py-1 rounded text-[8px] font-black italic tracking-widest shadow-[0_0_15px_#ff4a23]">LIVE</div>
-                        </div>
-                        <div className="mt-8 sm:mt-12 flex justify-between items-center opacity-40">
-                          <div className="flex items-center gap-2 text-[10px] font-black"><Clock size={12} /> 7:00 AM</div>
-                          <div className="flex items-center gap-2 text-[10px] font-black"><Users size={12} /> 11 Crew</div>
-                        </div>
-                      </div>
-                      <div className="bg-[#262626] p-6 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] opacity-35 hover:opacity-50 transition-opacity">
-                        <div className="flex justify-between items-start mb-4 sm:mb-6">
-                          <div className="flex flex-col">
-                            <span className="font-black text-lg sm:text-xl uppercase tracking-tighter italic">Tesla Cyberbeast</span>
-                            <span className="text-[10px] text-white/40 uppercase font-black tracking-widest mt-1">Tesla Motors</span>
-                          </div>
-                          <div className="bg-white/10 px-2.5 py-1 rounded text-[8px] font-black italic tracking-widest text-white/60">CONF</div>
-                        </div>
-                        <div className="mt-8 sm:mt-12 flex justify-between items-center opacity-40">
-                          <div className="flex items-center gap-2 text-[10px] font-black"><Clock size={12} /> 7:30 AM</div>
-                          <div className="flex items-center gap-2 text-[10px] font-black"><Users size={12} /> 5 Crew</div>
-                        </div>
-                      </div>
+              <div className={`w-full transition-all duration-500 transform ${!isScheduling ? 'opacity-100 scale-100 relative pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none absolute inset-0 flex items-center'}`}>
+                <div className="w-full bg-[#1A1A1A] rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 shadow-[0_0_120px_rgba(0,0,0,0.8)] border border-white/5 relative hover:border-[#ff4a23]/30 hover:shadow-[0_0_120px_rgba(255,74,35,0.15)] transition-all cursor-pointer">
+                  <div className="flex items-center justify-between mb-8 sm:mb-10">
+                    <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter italic">Productions</h3>
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#ff4a23] rounded-full flex items-center justify-center text-white shadow-[0_0_20px_#ff4a23]">
+                      <Plus className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={3} />
                     </div>
                   </div>
-
-                  <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-white/40">
-                    <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Cloud Sync Active</span>
-                    <span className="text-[#ff4a23] font-bold text-[11px] uppercase tracking-wider flex items-center gap-1">
-                      Hover for Live Schedule →
-                    </span>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                    <div className="bg-[#262626] p-6 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] border-l-[6px] border-[#ff4a23] transition-transform hover:translate-y-[-4px]">
+                      <div className="flex justify-between items-start mb-4 sm:mb-6">
+                        <div className="flex flex-col">
+                          <span className="font-black text-lg sm:text-xl uppercase tracking-tighter italic">Apex Air Max</span>
+                          <span className="text-[10px] text-white/40 uppercase font-black tracking-widest mt-1">Apex Athletics</span>
+                        </div>
+                        <div className="bg-[#ff4a23] px-2.5 py-1 rounded text-[8px] font-black italic tracking-widest shadow-[0_0_15px_#ff4a23]">LIVE</div>
+                      </div>
+                      <div className="mt-8 sm:mt-12 flex justify-between items-center opacity-40">
+                        <div className="flex items-center gap-2 text-[10px] font-black"><Clock size={12} /> 7:00 AM</div>
+                        <div className="flex items-center gap-2 text-[10px] font-black"><Users size={12} /> 11 Crew</div>
+                      </div>
+                    </div>
+                    <div className="bg-[#262626] p-6 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] opacity-35 hover:opacity-50 transition-opacity">
+                      <div className="flex justify-between items-start mb-4 sm:mb-6">
+                        <div className="flex flex-col">
+                          <span className="font-black text-lg sm:text-xl uppercase tracking-tighter italic">Tesla Cyberbeast</span>
+                          <span className="text-[10px] text-white/40 uppercase font-black tracking-widest mt-1">Tesla Motors</span>
+                        </div>
+                        <div className="bg-white/10 px-2.5 py-1 rounded text-[8px] font-black italic tracking-widest text-white/60">CONF</div>
+                      </div>
+                      <div className="mt-8 sm:mt-12 flex justify-between items-center opacity-40">
+                        <div className="flex items-center gap-2 text-[10px] font-black"><Clock size={12} /> 7:30 AM</div>
+                        <div className="flex items-center gap-2 text-[10px] font-black"><Users size={12} /> 5 Crew</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Dynamic Scheduling View (Mobile Schedule Phone Shot) */}
-              <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 transform ${isScheduling ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}>
-                <div className="relative w-[280px] sm:w-[310px] h-[440px] sm:h-[480px] p-1.5 sm:p-2 rounded-[2.5rem] sm:rounded-[2.8rem] bg-[#161616] border border-white/15 shadow-[0_0_90px_rgba(255,74,35,0.22)] overflow-hidden cursor-pointer">
-                  <div className="rounded-[2.1rem] sm:rounded-[2.4rem] overflow-hidden bg-black relative h-full">
+              {/* Dynamic Scheduling View (Normal Sized Phone) */}
+              <div className={`transition-all duration-500 transform ${isScheduling ? 'opacity-100 scale-100 relative pointer-events-auto w-full flex items-center justify-center' : 'opacity-0 scale-95 pointer-events-none absolute inset-0 flex items-center justify-center'}`}>
+                <div className="relative w-[280px] sm:w-[305px] shadow-2xl p-1.5 sm:p-2 rounded-[2.6rem] sm:rounded-[2.8rem] bg-[#161616] border border-white/15 overflow-hidden mx-auto transition-all duration-500 hover:border-[#ff4a23]/40">
+                  <div className="rounded-[2.2rem] sm:rounded-[2.4rem] overflow-hidden bg-black aspect-[1206/2622]">
                     <img
                       src={imgMobileSchedule}
                       alt="Mobile Dynamic Schedule"
-                      className="w-full h-auto object-top object-cover"
+                      className="w-full h-auto block"
                     />
-                    {/* Subtle gradient overlay at bottom */}
-                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
                   </div>
                 </div>
               </div>
