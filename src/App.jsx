@@ -13,6 +13,7 @@ import imgAppleWatchUltraProductionDetails from './assets/screengrabs/AppleWatch
 import imgMacBookStageDisplay from './assets/screengrabs/MacBook_StageDisplay.png';
 import imgWebStageDisplay from './assets/screengrabs/Web_StageDisplay.png';
 import imgMobileSchedule from './assets/screengrabs/Mobile_Schedule.png';
+import imgMobileScheduleCropped from './assets/screengrabs/Mobile_Schedule_Cropped.png';
 import imgMobileDashboard from './assets/screengrabs/Mobile_Dashboard.png';
 import imgMobileMessageBoard from './assets/screengrabs/Mobile_MessageBoard.png';
 import imgMobileCrewList from './assets/screengrabs/Mobile_CrewList.png';
@@ -525,16 +526,14 @@ const App = () => {
                 </div>
               </div>
 
-              {/* Dynamic Scheduling View (Normal Sized Phone) */}
-              <div className={`transition-all duration-500 transform ${isScheduling ? 'opacity-100 scale-100 relative pointer-events-auto w-full flex items-center justify-center' : 'opacity-0 scale-95 pointer-events-none absolute inset-0 flex items-center justify-center'}`}>
-                <div className="relative w-[280px] sm:w-[305px] shadow-2xl p-1.5 sm:p-2 rounded-[2.6rem] sm:rounded-[2.8rem] bg-[#161616] border border-white/15 overflow-hidden mx-auto transition-all duration-500 hover:border-[#ff4a23]/40">
-                  <div className="rounded-[2.2rem] sm:rounded-[2.4rem] overflow-hidden bg-black aspect-[1206/2622]">
-                    <img
-                      src={imgMobileSchedule}
-                      alt="Mobile Dynamic Schedule"
-                      className="w-full h-auto block"
-                    />
-                  </div>
+              {/* Dynamic Scheduling View (Cropped Schedule Card) */}
+              <div className={`w-full transition-all duration-500 transform ${isScheduling ? 'opacity-100 scale-100 relative pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none absolute inset-0 flex items-center'}`}>
+                <div className="w-full bg-[#1A1A1A] rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-[0_0_120px_rgba(0,0,0,0.8)] border border-white/5 relative hover:border-[#ff4a23]/30 hover:shadow-[0_0_120px_rgba(255,74,35,0.15)] transition-all cursor-pointer">
+                  <img
+                    src={imgMobileScheduleCropped}
+                    alt="Dynamic Mobile Schedule"
+                    className="w-full h-auto object-cover block"
+                  />
                 </div>
               </div>
             </div>
