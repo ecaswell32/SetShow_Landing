@@ -548,13 +548,8 @@ const App = () => {
                       alt="Mobile Dynamic Schedule"
                       className="w-full h-auto object-top object-cover"
                     />
-                    {/* Subtle gradient overlay at bottom with live status pill */}
-                    <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black via-black/85 to-transparent pointer-events-none flex items-end justify-center pb-3">
-                      <span className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#ff4a23] bg-[#ff4a23]/15 px-3 py-1 rounded-full border border-[#ff4a23]/30 backdrop-blur-md shadow-[0_0_15px_rgba(255,74,35,0.2)]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#ff4a23] animate-ping"></span>
-                        Live Schedule Sync
-                      </span>
-                    </div>
+                    {/* Subtle gradient overlay at bottom */}
+                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
                   </div>
                 </div>
               </div>
