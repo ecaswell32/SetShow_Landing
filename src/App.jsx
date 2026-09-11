@@ -160,6 +160,8 @@ const App = () => {
   const [activeArchitecture, setActiveArchitecture] = useState('suite'); // 'suite' | 'scheduling'
   const [hoveredArchitecture, setHoveredArchitecture] = useState(null); // null | 'suite' | 'scheduling' | 'image'
   const isScheduling = hoveredArchitecture === 'scheduling' || hoveredArchitecture === 'image' || (hoveredArchitecture === null && activeArchitecture === 'scheduling');
+  const [waitlistEmail, setWaitlistEmail] = useState('');
+  const [isWaitlistSubmitted, setIsWaitlistSubmitted] = useState(false);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -244,13 +246,12 @@ const App = () => {
             <a href="#workflow" className="hover:text-[#ff4a23] transition-colors">Workflow</a>
             <a href="#ecosystem" className="hover:text-[#ff4a23] transition-colors">Ecosystem</a>
             <a href="#analytics" className="hover:text-[#ff4a23] transition-colors">Analytics</a>
-            <a href="#download" className="hover:text-[#ff4a23] transition-colors">Download</a>
-            <a href="#download" className="bg-[#0f0f0f] text-white px-7 py-2.5 rounded-full hover:bg-[#ff4a23] transition-all inline-block font-black tracking-wider">
+            <a href="#waitlist" className="bg-[#0f0f0f] text-white px-7 py-2.5 rounded-full hover:bg-[#ff4a23] transition-all inline-block font-black tracking-wider">
               JOIN WAITLIST
             </a>
           </div>
           <div className="flex md:hidden items-center gap-2">
-            <a href="#download" className="bg-[#ff4a23] text-white px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider hover:bg-black transition-all">
+            <a href="#waitlist" className="bg-[#ff4a23] text-white px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider hover:bg-black transition-all">
               Join Waitlist
             </a>
           </div>
@@ -967,38 +968,48 @@ const App = () => {
       </section>
 
       {/* CTA Section */}
-      <footer id="download" className="py-40 px-6 bg-white relative z-30 overflow-hidden scroll-mt-24">
+      <footer id="waitlist" className="py-40 px-6 bg-white relative z-30 overflow-hidden scroll-mt-24">
+        <span id="download" className="sr-only" />
         <span id="join" className="sr-only" />
         <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center px-6 py-2.5 rounded-full bg-[#ff4a23]/10 text-[#ff4a23] text-[10px] sm:text-[11px] font-black uppercase tracking-[0.3em] mb-12">
-            DOWNLOAD NOW
+          <div className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-[#ff4a23]/10 text-[#ff4a23] text-[10px] sm:text-[11px] font-black uppercase tracking-[0.3em] mb-12">
+            <Zap size={15} /> EARLY ACCESS WAITLIST
           </div>
           <h2 className="text-5xl sm:text-6xl md:text-[80px] lg:text-[100px] font-black tracking-tighter mb-16 leading-[0.85] uppercase italic text-[#0f0f0f]">
             JOIN THE <br /> <span className="text-[#ff4a23]">SHOW.</span>
           </h2>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 max-w-4xl mx-auto mb-32">
-            <a
-              href="#ios"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 py-5 rounded-full bg-[#0f0f0f] text-white hover:bg-[#ff4a23] hover:scale-105 transition-all shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_15px_35px_rgba(255,74,35,0.3)] font-black uppercase italic tracking-wider text-sm sm:text-base group"
+          {isWaitlistSubmitted ? (
+            <div className="max-w-xl mx-auto mb-32 p-8 rounded-3xl bg-[#f7f6f4] border border-[#ff4a23]/20 flex flex-col items-center text-center animate-fade-in">
+              <div className="w-14 h-14 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-4">
+                <CheckCircle2 className="w-8 h-8" />
+              </div>
+              <h4 className="text-2xl font-black uppercase italic tracking-tight text-[#0f0f0f] mb-2">You're On The List!</h4>
+              <p className="text-gray-600 font-medium">We've saved your spot. We'll reach out to <span className="text-[#0f0f0f] font-bold">{waitlistEmail}</span> as soon as early access opens.</p>
+            </div>
+          ) : (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (waitlistEmail.trim()) setIsWaitlistSubmitted(true);
+              }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto mb-32"
             >
-              <AppleLogo className="w-5 h-5 fill-current shrink-0 group-hover:scale-110 transition-transform -mt-0.5" />
-              <span>iOS</span>
-            </a>
-            <a
-              href="#android"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 py-5 rounded-full bg-[#0f0f0f] text-white hover:bg-[#ff4a23] hover:scale-105 transition-all shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_15px_35px_rgba(255,74,35,0.3)] font-black uppercase italic tracking-wider text-sm sm:text-base group"
-            >
-              <GooglePlayLogo className="w-5 h-5 shrink-0 group-hover:scale-110 transition-transform" />
-              <span>Google Play</span>
-            </a>
-            <a
-              href="https://app.setshow.app"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 py-5 rounded-full bg-[#0f0f0f] text-white hover:bg-[#ff4a23] hover:scale-105 transition-all shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_15px_35px_rgba(255,74,35,0.3)] font-black uppercase italic tracking-wider text-sm sm:text-base group"
-            >
-              <Monitor className="w-5 h-5 shrink-0 group-hover:scale-110 transition-transform" />
-              <span>Log In</span>
-            </a>
-          </div>
+              <input
+                type="email"
+                required
+                value={waitlistEmail}
+                onChange={(e) => setWaitlistEmail(e.target.value)}
+                placeholder="production@studio.com"
+                className="w-full px-8 py-5 rounded-full bg-[#f7f6f4] border-2 border-transparent focus:border-[#ff4a23] focus:bg-white focus:outline-none font-bold transition-all text-base sm:text-lg text-black placeholder:text-gray-400 shadow-inner"
+              />
+              <button
+                type="submit"
+                className="w-full sm:w-auto whitespace-nowrap bg-[#0f0f0f] text-white px-10 py-5 rounded-full font-black hover:bg-[#ff4a23] hover:scale-105 transition-all uppercase tracking-widest text-base sm:text-lg italic shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_15px_35px_rgba(255,74,35,0.3)] shrink-0"
+              >
+                Join Waitlist
+              </button>
+            </form>
+          )}
           <div className="pt-20 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8 opacity-40">
             <div className="flex items-center gap-3">
               <img src={logoBlack} alt="SetShow Logo" className="h-8" />
