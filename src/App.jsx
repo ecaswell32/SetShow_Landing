@@ -251,7 +251,7 @@ const App = () => {
             </a>
           </div>
           <div className="flex md:hidden items-center gap-2">
-            <a href="#waitlist" className="bg-[#ff4a23] text-white px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider hover:bg-black transition-all">
+            <a href="#waitlist" className="bg-[#0f0f0f] text-white px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider hover:bg-[#ff4a23] transition-all">
               Join Waitlist
             </a>
           </div>
