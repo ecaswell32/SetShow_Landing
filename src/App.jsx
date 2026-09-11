@@ -245,16 +245,13 @@ const App = () => {
             <a href="#ecosystem" className="hover:text-[#ff4a23] transition-colors">Ecosystem</a>
             <a href="#analytics" className="hover:text-[#ff4a23] transition-colors">Analytics</a>
             <a href="#download" className="hover:text-[#ff4a23] transition-colors">Download</a>
-            <a href="https://app.setshow.app" className="bg-[#0f0f0f] text-white px-7 py-2.5 rounded-full hover:bg-[#ff4a23] transition-all inline-block">
-              LOG IN
+            <a href="#download" className="bg-[#0f0f0f] text-white px-7 py-2.5 rounded-full hover:bg-[#ff4a23] transition-all inline-block font-black tracking-wider">
+              JOIN WAITLIST
             </a>
           </div>
           <div className="flex md:hidden items-center gap-2">
-            <a href="#download" className="bg-[#ff4a23] text-white px-3.5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider hover:bg-black transition-all">
-              Download
-            </a>
-            <a href="https://app.setshow.app" className="bg-[#0f0f0f] text-white px-3.5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider hover:bg-[#ff4a23] transition-all">
-              Log In
+            <a href="#download" className="bg-[#ff4a23] text-white px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider hover:bg-black transition-all">
+              Join Waitlist
             </a>
           </div>
         </div>
