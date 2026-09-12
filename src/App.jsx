@@ -964,7 +964,7 @@ const App = () => {
             JOIN THE <br /> <span className="text-[#ff4a23]">SHOW.</span>
           </h2>
           {isWaitlistSubmitted ? (
-            <div className="max-w-xl mx-auto mb-32 p-8 rounded-3xl bg-[#f7f6f4] border border-[#ff4a23]/20 flex flex-col items-center text-center animate-fade-in">
+            <div className="max-w-xl mx-auto mb-12 p-8 rounded-3xl bg-[#f7f6f4] border border-[#ff4a23]/20 flex flex-col items-center text-center animate-fade-in">
               <div className="w-14 h-14 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-4">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
@@ -977,7 +977,7 @@ const App = () => {
                 e.preventDefault();
                 if (waitlistEmail.trim()) setIsWaitlistSubmitted(true);
               }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto mb-32"
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto mb-8"
             >
               <input
                 type="email"
@@ -995,6 +995,34 @@ const App = () => {
               </button>
             </form>
           )}
+
+          {/* Secondary Action: App Store Pre-Order (Inactive / Coming Soon) */}
+          <div className="flex flex-col items-center justify-center gap-3 mb-28 sm:mb-32">
+            <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">
+              <span className="w-8 h-px bg-gray-200"></span>
+              <span>Or</span>
+              <span className="w-8 h-px bg-gray-200"></span>
+            </div>
+
+            <div className="relative group inline-block">
+              <button
+                type="button"
+                disabled
+                aria-disabled="true"
+                className="inline-flex items-center gap-3.5 px-6 sm:px-7 py-3 sm:py-3.5 rounded-2xl bg-[#0f0f0f] text-white opacity-50 cursor-not-allowed border border-black/10 shadow-sm transition-all select-none"
+                title="App Store Pre-Order coming soon"
+              >
+                <AppleLogo className="w-6 h-6 fill-white shrink-0" />
+                <div className="text-left flex flex-col">
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-gray-400 leading-none">Pre-Order on the</span>
+                  <span className="text-base sm:text-lg font-black tracking-tight text-white leading-tight">App Store</span>
+                </div>
+                <span className="ml-2 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/10 text-white/80 border border-white/10">
+                  Coming Soon
+                </span>
+              </button>
+            </div>
+          </div>
           <div className="pt-20 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8 opacity-40">
             <div className="flex items-center gap-3">
               <img src={logoBlack} alt="SetShow Logo" className="h-8" />
