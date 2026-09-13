@@ -748,7 +748,7 @@ const App = () => {
         <div className="max-w-7xl mx-auto">
           <FadeIn className="text-center mb-10 sm:mb-12">
             <div className="inline-flex items-center gap-2 text-[#ff4a23] font-black tracking-[0.3em] text-[10px] uppercase mb-4">
-              <Layout className="w-3.5 h-3.5" /> Platform Interfaces
+              <Layout className="w-3.5 h-3.5" /> Multiple Platforms
             </div>
             <h3 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase italic mb-6">
               <span className="text-[#ff4a23]">POWERFUL</span> INTERFACES.
