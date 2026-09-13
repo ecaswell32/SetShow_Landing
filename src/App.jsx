@@ -273,6 +273,7 @@ const App = () => {
             <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 text-xs sm:text-sm font-black text-gray-500 uppercase tracking-widest mb-4 sm:mb-6 opacity-90">
               <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#ff4a23]"></span> iOS</span>
               <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#ff4a23]"></span> Watch</span>
+              <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#ff4a23]"></span> Android</span>
               <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#ff4a23]"></span> Web</span>
             </div>
             <h2 className="text-5xl sm:text-6xl md:text-[80px] lg:text-[100px] font-black tracking-tighter mb-4 sm:mb-6 leading-[0.85] uppercase italic px-2">
