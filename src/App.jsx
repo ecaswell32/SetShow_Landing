@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Bell, Clock, CheckCircle2, Layout, Users, Zap, ShieldCheck, Camera, Flashlight, Plus, Smartphone, Monitor, Watch, Activity, TrendingUp, BarChart3 } from 'lucide-react';
+import { Bell, Clock, CheckCircle2, Layout, Users, Zap, ShieldCheck, Camera, Flashlight, Plus, Smartphone, Monitor, Watch, Activity, TrendingUp, BarChart3, Loader2 } from 'lucide-react';
 import logoOrange from './assets/logo-full-orange.png';
 import logoBlack from './assets/logo-full-black.png';
 import { PrivacyPolicy } from './PrivacyPolicy.jsx';
@@ -163,6 +163,35 @@ const App = () => {
   const isScheduling = hoveredArchitecture === 'scheduling' || hoveredArchitecture === 'image' || (hoveredArchitecture === null && activeArchitecture === 'scheduling');
   const [waitlistEmail, setWaitlistEmail] = useState('');
   const [isWaitlistSubmitted, setIsWaitlistSubmitted] = useState(false);
+  const [isWaitlistLoading, setIsWaitlistLoading] = useState(false);
+
+  const handleWaitlistSubmit = async (e) => {
+    e.preventDefault();
+    const emailToSubmit = waitlistEmail.trim();
+    if (!emailToSubmit) return;
+
+    setIsWaitlistLoading(true);
+    try {
+      await fetch("https://formsubmit.co/ajax/support@setshow.app", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          email: emailToSubmit,
+          _subject: "New SetShow Early Access Waitlist Signup!",
+          _template: "table",
+          source: "Landing Page (draft.setshow.app)",
+        }),
+      });
+    } catch (err) {
+      console.error("Waitlist submission network error:", err);
+    } finally {
+      setIsWaitlistLoading(false);
+      setIsWaitlistSubmitted(true);
+    }
+  };
 
   useEffect(() => {
     const handlePopState = () => {
@@ -974,25 +1003,31 @@ const App = () => {
             </div>
           ) : (
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                if (waitlistEmail.trim()) setIsWaitlistSubmitted(true);
-              }}
+              onSubmit={handleWaitlistSubmit}
               className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto mb-8"
             >
               <input
                 type="email"
                 required
+                disabled={isWaitlistLoading}
                 value={waitlistEmail}
                 onChange={(e) => setWaitlistEmail(e.target.value)}
                 placeholder="production@studio.com"
-                className="w-full px-8 py-5 rounded-full bg-[#f7f6f4] border-2 border-transparent focus:border-[#ff4a23] focus:bg-white focus:outline-none font-bold transition-all text-base sm:text-lg text-black placeholder:text-gray-400 shadow-inner"
+                className="w-full px-8 py-5 rounded-full bg-[#f7f6f4] border-2 border-transparent focus:border-[#ff4a23] focus:bg-white focus:outline-none font-bold transition-all text-base sm:text-lg text-black placeholder:text-gray-400 shadow-inner disabled:opacity-60"
               />
               <button
                 type="submit"
-                className="w-full sm:w-auto whitespace-nowrap bg-[#0f0f0f] text-white px-10 py-5 rounded-full font-black hover:bg-[#ff4a23] hover:scale-105 transition-all uppercase tracking-widest text-base sm:text-lg italic shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_15px_35px_rgba(255,74,35,0.3)] shrink-0"
+                disabled={isWaitlistLoading}
+                className="w-full sm:w-auto whitespace-nowrap bg-[#0f0f0f] text-white px-10 py-5 rounded-full font-black hover:bg-[#ff4a23] hover:scale-105 transition-all uppercase tracking-widest text-base sm:text-lg italic shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_15px_35px_rgba(255,74,35,0.3)] shrink-0 disabled:opacity-75 disabled:hover:scale-100 disabled:hover:bg-[#0f0f0f] flex items-center justify-center gap-3"
               >
-                Join Waitlist
+                {isWaitlistLoading ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin text-[#ff4a23]" />
+                    <span>Joining...</span>
+                  </>
+                ) : (
+                  <span>Join Waitlist</span>
+                )}
               </button>
             </form>
           )}
