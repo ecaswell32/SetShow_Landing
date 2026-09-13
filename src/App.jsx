@@ -339,7 +339,7 @@ const App = () => {
                       <span className="text-[9px] text-black/30 font-bold">1m ago</span>
                     </div>
                     <p className="text-[14px] font-medium text-black/90 leading-tight">
-                      Hey, lets start filming at 3pm on location A
+                      Park in the lot behind building C
                     </p>
                   </div>
                 </div>
