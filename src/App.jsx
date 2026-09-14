@@ -182,7 +182,7 @@ const App = () => {
           email: emailToSubmit,
           _subject: "New SetShow Early Access Waitlist Signup!",
           _template: "table",
-          source: "Landing Page (draft.setshow.app)",
+          source: "Landing Page (setshow.app)",
         }),
       });
     } catch (err) {
