@@ -156,6 +156,7 @@ const App = () => {
     return 'landing';
   });
   const [scrollY, setScrollY] = useState(0);
+  const [viewportHeight, setViewportHeight] = useState(() => (typeof window !== 'undefined' ? window.innerHeight : 800));
   const [hoveredFeature, setHoveredFeature] = useState(2); // Track hovered feature block
   const [galleryTab, setGalleryTab] = useState('mobile'); // 'mobile' | 'web' | 'watch'
   const [activeArchitecture, setActiveArchitecture] = useState('suite'); // 'suite' | 'scheduling'
@@ -215,12 +216,22 @@ const App = () => {
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
+    const handleResize = () => setViewportHeight(window.innerHeight);
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
+  // Viewport-adaptive scroll span: ensures the hero animation takes ~2-3 quick scrolls/swipes on any screen
+  const heroScrollSpan = Math.max(viewportHeight * 1.1, 800);
+  const animSpan = heroScrollSpan * 0.72;
+  const exitSpan = heroScrollSpan * 0.28;
+
   // Countdown drops from 40 down to 0
-  const countdown = Math.max(40 - Math.floor((scrollY / 2000) * 45), 0);
+  const countdown = Math.max(40 - Math.floor((scrollY / heroScrollSpan) * 45), 0);
   // Progress bar mathematically maps to an hour scale (60 minutes total)
   const progressBarWidth = Math.min(((60 - countdown) / 60) * 100, 100);
 
@@ -228,9 +239,9 @@ const App = () => {
     return `${val}min`;
   };
 
-  const heroProgress = Math.min(scrollY / 1300, 1);
+  const heroProgress = Math.min(scrollY / animSpan, 1);
   const phoneProgress = Math.min(heroProgress / 0.75, 1);
-  const phoneRevealProgress = Math.max(0, Math.min((scrollY - 1350) / 600, 1));
+  const phoneRevealProgress = Math.max(0, Math.min((scrollY - animSpan) / exitSpan, 1));
 
   const notificationOpacity = heroProgress > 0.4
     ? (heroProgress < 0.75
@@ -291,7 +302,7 @@ const App = () => {
       {/* Main Content Landmark for SEO & Accessibility */}
       <main id="main-content">
         {/* Hero Section */}
-        <section className="relative h-[280vh] sm:h-[320vh] bg-white">
+        <section className="relative h-[220vh] sm:h-[225vh] bg-white">
         <div className="sticky top-0 h-[100dvh] flex flex-col items-center pt-[15vh] sm:pt-[20vh] 2xl:pt-[22vh] overflow-hidden bg-white">
           {/* Hero Copy */}
           <div
