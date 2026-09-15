@@ -455,7 +455,8 @@ const App = () => {
                 <FadeIn key={i} delay={i * 150} className="h-full">
                   <div
                     onMouseEnter={() => setHoveredFeature(i)}
-                    className={`h-full p-8 sm:p-12 rounded-[2.5rem] sm:rounded-[3.5rem] border transition-all duration-500 hover:scale-[1.02] cursor-default ${isHovered ? 'bg-[#ff4a23] border-[#ff4a23] text-white shadow-2xl hover:shadow-[0_20px_60px_rgba(255,74,35,0.3)]' : 'bg-[#f7f6f4] border-gray-100'}`}
+                    onClick={() => setHoveredFeature(i)}
+                    className={`h-full p-8 sm:p-12 rounded-[2.5rem] sm:rounded-[3.5rem] border transition-all duration-500 hover:scale-[1.02] cursor-pointer sm:cursor-default ${isHovered ? 'bg-[#ff4a23] border-[#ff4a23] text-white shadow-2xl hover:shadow-[0_20px_60px_rgba(255,74,35,0.3)]' : 'bg-[#f7f6f4] border-gray-100'}`}
                   >
                     <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-8 transition-colors duration-500 ${isHovered ? 'bg-white text-[#ff4a23]' : 'bg-[#0f0f0f] text-white'}`}>
                       {feature.icon}
@@ -717,9 +718,9 @@ const App = () => {
 
             {/* Right Column: Dual iPhone Showcase */}
             <div className="lg:col-span-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-xl mx-auto lg:max-w-none">
+              <div className="flex sm:grid sm:grid-cols-2 gap-5 sm:gap-8 max-w-xl mx-auto lg:max-w-none overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory no-scrollbar pb-4 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
                 {/* Scorecard Phone */}
-                <FadeIn delay={200} className="flex flex-col group">
+                <FadeIn delay={200} className="flex flex-col group shrink-0 w-[78vw] max-w-[280px] sm:w-auto sm:max-w-none snap-center">
                   <div className="relative bg-[#161616] p-1 sm:p-1.5 rounded-[2.2rem] sm:rounded-[2.4rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] group-hover:border-[#ff4a23]/50 group-hover:shadow-[0_20px_60px_rgba(255,74,35,0.18)] transition-all duration-500 transform group-hover:-translate-y-2">
                     <div className="relative rounded-[1.9rem] sm:rounded-[2.1rem] overflow-hidden bg-black aspect-[1206/2622]">
                       <img
@@ -745,7 +746,7 @@ const App = () => {
                 </FadeIn>
 
                 {/* Pace Timeline Phone */}
-                <FadeIn delay={350} className="flex flex-col group sm:pt-8 lg:pt-12">
+                <FadeIn delay={350} className="flex flex-col group shrink-0 w-[78vw] max-w-[280px] sm:w-auto sm:max-w-none snap-center sm:pt-8 lg:pt-12">
                   <div className="relative bg-[#161616] p-1 sm:p-1.5 rounded-[2.2rem] sm:rounded-[2.4rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] group-hover:border-[#ff4a23]/50 group-hover:shadow-[0_20px_60px_rgba(255,74,35,0.18)] transition-all duration-500 transform group-hover:-translate-y-2">
                     <div className="relative rounded-[1.9rem] sm:rounded-[2.1rem] overflow-hidden bg-black aspect-[1206/2622]">
                       <img
@@ -770,6 +771,12 @@ const App = () => {
                   </div>
                 </FadeIn>
               </div>
+
+              {/* Mobile Swipe Hint */}
+              <div className="flex sm:hidden justify-center items-center gap-1.5 mt-3 text-[10px] font-black uppercase tracking-widest text-gray-500">
+                <span>Swipe</span>
+                <span className="text-[#ff4a23]">→</span>
+              </div>
             </div>
           </div>
         </div>
@@ -791,12 +798,13 @@ const App = () => {
           </FadeIn>
 
           {/* Platform Tab Selector */}
-          <FadeIn delay={100} className="flex justify-center mb-12 sm:mb-16">
-            <div className="inline-flex p-1.5 rounded-full bg-[#181818] border border-white/10 shadow-2xl">
+          {/* Platform Tab Selector */}
+          <FadeIn delay={100} className="flex justify-center mb-10 sm:mb-16 px-2">
+            <div className="inline-flex p-1 sm:p-1.5 rounded-full bg-[#181818] border border-white/10 shadow-2xl max-w-full">
               {[
-                { id: 'mobile', label: 'Mobile App', icon: Smartphone },
-                { id: 'web', label: 'Web Command', icon: Monitor },
-                { id: 'watch', label: 'WatchOS', icon: Watch },
+                { id: 'mobile', label: 'Mobile App', shortLabel: 'Mobile', icon: Smartphone },
+                { id: 'web', label: 'Web Command', shortLabel: 'Web', icon: Monitor },
+                { id: 'watch', label: 'WatchOS', shortLabel: 'Watch', icon: Watch },
               ].map((tab) => {
                 const Icon = tab.icon;
                 const isActive = galleryTab === tab.id;
@@ -804,182 +812,204 @@ const App = () => {
                   <button
                     key={tab.id}
                     onClick={() => setGalleryTab(tab.id)}
-                    className={`flex items-center gap-2 px-5 sm:px-7 py-2.5 rounded-full text-xs sm:text-sm font-black uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+                    className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-7 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-black uppercase tracking-wider transition-all duration-300 cursor-pointer ${
                       isActive
                         ? 'bg-[#ff4a23] text-white shadow-[0_0_20px_rgba(255,74,35,0.4)]'
                         : 'text-gray-400 hover:text-white hover:bg-white/5'
                     }`}
                   >
-                    <Icon className="w-4 h-4" />
-                    <span>{tab.label}</span>
+                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                    <span className="hidden sm:inline">{tab.label}</span>
+                    <span className="inline sm:hidden">{tab.shortLabel}</span>
                   </button>
                 );
               })}
             </div>
           </FadeIn>
 
-          {/* Mobile App Grid */}
+          {/* Mobile App Grid - Horizontal Snap Carousel on Mobile */}
           {galleryTab === 'mobile' && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-              {[
-                {
-                  tag: "01 / PRODUCTIONS",
-                  title: "Projects Hub",
-                  desc: "Quickly view active shoots, department call times, and live statuses in real time.",
-                  img: imgMobileDashboard,
-                  alt: "Mobile Productions Dashboard"
-                },
-                {
-                  tag: "02 / SCHEDULE",
-                  title: "Live Call Sheet",
-                  desc: "Track active shooting blocks, setup countdowns, and upcoming scenes with live sync.",
-                  img: imgMobileSchedule,
-                  alt: "Mobile Day Schedule"
-                },
-                {
-                  tag: "03 / ROSTER",
-                  title: "Crew Directory",
-                  desc: "Instant department breakdown, contact links, and real-time crew check-in confirmations.",
-                  img: imgMobileCrewList,
-                  alt: "Mobile Crew Directory"
-                },
-                {
-                  tag: "04 / ANNOUNCEMENTS",
-                  title: "Message Board",
-                  desc: "Set-wide announcements, urgent alerts, and schedule changes broadcast to everyone.",
-                  img: imgMobileMessageBoard,
-                  alt: "Mobile Message Board"
-                }
-              ].map((item, idx) => (
-                <FadeIn key={item.title} delay={100 + idx * 75} className="flex flex-col group">
-                  <div className="relative bg-[#161616] p-1 sm:p-1.5 rounded-[2.2rem] sm:rounded-[2.4rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] group-hover:border-[#ff4a23]/50 group-hover:shadow-[0_20px_60px_rgba(255,74,35,0.18)] transition-all duration-500 transform group-hover:-translate-y-2">
-                    <div className="relative rounded-[1.9rem] sm:rounded-[2.1rem] overflow-hidden bg-black aspect-[1206/2622]">
-                      <img
-                        src={item.img}
-                        alt={item.alt}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div>
+              <div className="flex lg:grid lg:grid-cols-4 gap-5 lg:gap-8 overflow-x-auto lg:overflow-x-visible snap-x snap-mandatory no-scrollbar pb-4 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0">
+                {[
+                  {
+                    tag: "01 / PRODUCTIONS",
+                    title: "Projects Hub",
+                    desc: "Quickly view active shoots, department call times, and live statuses in real time.",
+                    img: imgMobileDashboard,
+                    alt: "Mobile Productions Dashboard"
+                  },
+                  {
+                    tag: "02 / SCHEDULE",
+                    title: "Live Call Sheet",
+                    desc: "Track active shooting blocks, setup countdowns, and upcoming scenes with live sync.",
+                    img: imgMobileSchedule,
+                    alt: "Mobile Day Schedule"
+                  },
+                  {
+                    tag: "03 / ROSTER",
+                    title: "Crew Directory",
+                    desc: "Instant department breakdown, contact links, and real-time crew check-in confirmations.",
+                    img: imgMobileCrewList,
+                    alt: "Mobile Crew Directory"
+                  },
+                  {
+                    tag: "04 / ANNOUNCEMENTS",
+                    title: "Message Board",
+                    desc: "Set-wide announcements, urgent alerts, and schedule changes broadcast to everyone.",
+                    img: imgMobileMessageBoard,
+                    alt: "Mobile Message Board"
+                  }
+                ].map((item, idx) => (
+                  <FadeIn key={item.title} delay={100 + idx * 75} className="flex flex-col group shrink-0 w-[78vw] max-w-[285px] lg:w-auto lg:max-w-none snap-center">
+                    <div className="relative bg-[#161616] p-1 sm:p-1.5 rounded-[2.2rem] sm:rounded-[2.4rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] group-hover:border-[#ff4a23]/50 group-hover:shadow-[0_20px_60px_rgba(255,74,35,0.18)] transition-all duration-500 transform group-hover:-translate-y-2">
+                      <div className="relative rounded-[1.9rem] sm:rounded-[2.1rem] overflow-hidden bg-black aspect-[1206/2622]">
+                        <img
+                          src={item.img}
+                          alt={item.alt}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      </div>
                     </div>
-                  </div>
-                  <div className="mt-5 px-2">
-                    <span className="text-[#ff4a23] font-black text-[10px] uppercase tracking-[0.25em] block mb-1">
-                      {item.tag}
-                    </span>
-                    <h4 className="text-white font-black text-lg uppercase tracking-tighter italic mb-1">
-                      {item.title}
-                    </h4>
-                    <p className="text-gray-400 text-xs leading-relaxed font-medium">
-                      {item.desc}
-                    </p>
-                  </div>
-                </FadeIn>
-              ))}
+                    <div className="mt-5 px-2">
+                      <span className="text-[#ff4a23] font-black text-[10px] uppercase tracking-[0.25em] block mb-1">
+                        {item.tag}
+                      </span>
+                      <h4 className="text-white font-black text-lg uppercase tracking-tighter italic mb-1">
+                        {item.title}
+                      </h4>
+                      <p className="text-gray-400 text-xs leading-relaxed font-medium">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </FadeIn>
+                ))}
+              </div>
+              {/* Mobile Swipe Hint */}
+              <div className="flex lg:hidden justify-center items-center gap-1.5 mt-3 text-[10px] font-black uppercase tracking-widest text-gray-500">
+                <span>Swipe to explore 4 screens</span>
+                <span className="text-[#ff4a23]">→</span>
+              </div>
             </div>
           )}
 
           {/* Web Command Grid */}
           {galleryTab === 'web' && (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-start">
-              {[
-                {
-                  tag: "01 / EDITOR",
-                  title: "Schedule Editor",
-                  desc: "Drag-and-drop scene reordering, automated department call calculations, and quick scene creation.",
-                  img: imgWebEditSchedule,
-                  alt: "Web Schedule Editor"
-                },
-                {
-                  tag: "02 / DISPLAY",
-                  title: "Stage Display",
-                  desc: "High-contrast, high-visibility stage clock and scene monitor designed for video village and production carts.",
-                  img: imgWebStageDisplay,
-                  alt: "Web Stage Display"
-                },
-                {
-                  tag: "03 / STRIPBOARD",
-                  title: "Stripboard Manager",
-                  desc: "Traditional production stripboard modernized with real-time day breakdown and digital crew sync.",
-                  img: imgWebStripboard,
-                  alt: "Web Stripboard"
-                }
-              ].map((item, idx) => (
-                <FadeIn key={item.title} delay={100 + idx * 100} className="flex flex-col group">
-                  <div className="bg-[#141414] rounded-2xl border border-white/10 overflow-hidden shadow-2xl group-hover:border-[#ff4a23]/50 group-hover:shadow-[0_20px_50px_rgba(255,74,35,0.15)] transition-all duration-500 transform group-hover:-translate-y-1.5">
-                    <img
-                      src={item.img}
-                      alt={item.alt}
-                      className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.02]"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="mt-5 px-2">
-                    <span className="text-[#ff4a23] font-black text-[10px] uppercase tracking-[0.25em] block mb-1">
-                      {item.tag}
-                    </span>
-                    <h4 className="text-white font-black text-lg uppercase tracking-tighter italic mb-1">
-                      {item.title}
-                    </h4>
-                    <p className="text-gray-400 text-xs leading-relaxed font-medium">
-                      {item.desc}
-                    </p>
-                  </div>
-                </FadeIn>
-              ))}
+            <div>
+              <div className="flex lg:grid lg:grid-cols-3 gap-5 lg:gap-8 items-start overflow-x-auto lg:overflow-x-visible snap-x snap-mandatory no-scrollbar pb-4 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0">
+                {[
+                  {
+                    tag: "01 / EDITOR",
+                    title: "Schedule Editor",
+                    desc: "Drag-and-drop scene reordering, automated department call calculations, and quick scene creation.",
+                    img: imgWebEditSchedule,
+                    alt: "Web Schedule Editor"
+                  },
+                  {
+                    tag: "02 / DISPLAY",
+                    title: "Stage Display",
+                    desc: "High-contrast, high-visibility stage clock and scene monitor designed for video village and production carts.",
+                    img: imgWebStageDisplay,
+                    alt: "Web Stage Display"
+                  },
+                  {
+                    tag: "03 / STRIPBOARD",
+                    title: "Stripboard Manager",
+                    desc: "Traditional production stripboard modernized with real-time day breakdown and digital crew sync.",
+                    img: imgWebStripboard,
+                    alt: "Web Stripboard"
+                  }
+                ].map((item, idx) => (
+                  <FadeIn key={item.title} delay={100 + idx * 100} className="flex flex-col group shrink-0 w-[84vw] max-w-[340px] lg:w-auto lg:max-w-none snap-center">
+                    <div className="bg-[#141414] rounded-2xl border border-white/10 overflow-hidden shadow-2xl group-hover:border-[#ff4a23]/50 group-hover:shadow-[0_20px_50px_rgba(255,74,35,0.15)] transition-all duration-500 transform group-hover:-translate-y-1.5">
+                      <img
+                        src={item.img}
+                        alt={item.alt}
+                        className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.02]"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="mt-5 px-2">
+                      <span className="text-[#ff4a23] font-black text-[10px] uppercase tracking-[0.25em] block mb-1">
+                        {item.tag}
+                      </span>
+                      <h4 className="text-white font-black text-lg uppercase tracking-tighter italic mb-1">
+                        {item.title}
+                      </h4>
+                      <p className="text-gray-400 text-xs leading-relaxed font-medium">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </FadeIn>
+                ))}
+              </div>
+              {/* Mobile Swipe Hint */}
+              <div className="flex lg:hidden justify-center items-center gap-1.5 mt-3 text-[10px] font-black uppercase tracking-widest text-gray-500">
+                <span>Swipe to explore 3 screens</span>
+                <span className="text-[#ff4a23]">→</span>
+              </div>
             </div>
           )}
 
           {/* WatchOS Grid */}
           {galleryTab === 'watch' && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 max-w-6xl mx-auto items-center">
-              {[
-                {
-                  tag: "01 / LIVE GLANCE",
-                  title: "Live Scene & Countdown",
-                  desc: "Glance at your wrist for instant real-time updates on what scene is shooting, current setup, and remaining shoot time.",
-                  img: imgAppleWatchUltraLive,
-                  alt: "Apple Watch Ultra Live Scene"
-                },
-                {
-                  tag: "02 / TIMELINE",
-                  title: "Wrist Schedule",
-                  desc: "Scroll through call times, department setups, lunch breaks, and wrap times directly on Apple Watch Ultra.",
-                  img: imgAppleWatchUltraSchedule,
-                  alt: "Apple Watch Ultra Schedule"
-                },
-                {
-                  tag: "03 / CALL SHEET",
-                  title: "Production Details",
-                  desc: "Personalized crew call times, stage assignments, and one-tap shoot locations with map navigation.",
-                  img: imgAppleWatchUltraProductionDetails,
-                  alt: "Apple Watch Ultra Production Details"
-                }
-              ].map((item, idx) => (
-                <FadeIn key={item.title} delay={100 + idx * 100} className="flex flex-col items-center text-center group">
-                  <div className="relative w-full max-w-[280px] sm:max-w-[320px] transition-transform duration-500 group-hover:-translate-y-2">
-                    <div className="relative w-full aspect-[766/1106]">
-                      <img
-                        src={item.img}
-                        alt={item.alt}
-                        className="w-full h-full object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.8)]"
-                        loading="lazy"
-                      />
+            <div>
+              <div className="flex md:grid md:grid-cols-3 gap-6 md:gap-10 max-w-6xl mx-auto items-center overflow-x-auto md:overflow-x-visible snap-x snap-mandatory no-scrollbar pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
+                {[
+                  {
+                    tag: "01 / LIVE GLANCE",
+                    title: "Live Scene & Countdown",
+                    desc: "Glance at your wrist for instant real-time updates on what scene is shooting, current setup, and remaining shoot time.",
+                    img: imgAppleWatchUltraLive,
+                    alt: "Apple Watch Ultra Live Scene"
+                  },
+                  {
+                    tag: "02 / TIMELINE",
+                    title: "Wrist Schedule",
+                    desc: "Scroll through call times, department setups, lunch breaks, and wrap times directly on Apple Watch Ultra.",
+                    img: imgAppleWatchUltraSchedule,
+                    alt: "Apple Watch Ultra Schedule"
+                  },
+                  {
+                    tag: "03 / CALL SHEET",
+                    title: "Production Details",
+                    desc: "Personalized crew call times, stage assignments, and one-tap shoot locations with map navigation.",
+                    img: imgAppleWatchUltraProductionDetails,
+                    alt: "Apple Watch Ultra Production Details"
+                  }
+                ].map((item, idx) => (
+                  <FadeIn key={item.title} delay={100 + idx * 100} className="flex flex-col items-center text-center group shrink-0 w-[78vw] max-w-[280px] md:w-auto md:max-w-none snap-center">
+                    <div className="relative w-full max-w-[280px] sm:max-w-[320px] transition-transform duration-500 group-hover:-translate-y-2">
+                      <div className="relative w-full aspect-[766/1106]">
+                        <img
+                          src={item.img}
+                          alt={item.alt}
+                          className="w-full h-full object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.8)]"
+                          loading="lazy"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className="mt-4 max-w-xs">
-                    <span className="text-[#ff4a23] font-black text-[10px] uppercase tracking-[0.25em] block mb-1">
-                      {item.tag}
-                    </span>
-                    <h4 className="text-white font-black text-lg uppercase tracking-tighter italic mb-1">
-                      {item.title}
-                    </h4>
-                    <p className="text-gray-400 text-xs leading-relaxed font-medium">
-                      {item.desc}
-                    </p>
-                  </div>
-                </FadeIn>
-              ))}
+                    <div className="mt-4 max-w-xs">
+                      <span className="text-[#ff4a23] font-black text-[10px] uppercase tracking-[0.25em] block mb-1">
+                        {item.tag}
+                      </span>
+                      <h4 className="text-white font-black text-lg uppercase tracking-tighter italic mb-1">
+                        {item.title}
+                      </h4>
+                      <p className="text-gray-400 text-xs leading-relaxed font-medium">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </FadeIn>
+                ))}
+              </div>
+              {/* Mobile Swipe Hint */}
+              <div className="flex md:hidden justify-center items-center gap-1.5 mt-3 text-[10px] font-black uppercase tracking-widest text-gray-500">
+                <span>Swipe to explore 3 wrist screens</span>
+                <span className="text-[#ff4a23]">→</span>
+              </div>
             </div>
           )}
         </div>
