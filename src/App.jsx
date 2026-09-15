@@ -591,8 +591,8 @@ const App = () => {
             {/* iOS Live Activities */}
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <FadeIn className="order-2 md:order-1 flex justify-center">
-                <div className="relative w-[300px] shadow-2xl p-1 sm:p-1.5 rounded-[2.2rem] sm:rounded-[2.4rem] bg-[#161616] border border-white/15 overflow-hidden">
-                  <div className="rounded-[1.9rem] sm:rounded-[2.1rem] overflow-hidden bg-black">
+                <div className="relative w-[210px] sm:w-[250px] md:w-[280px] shadow-2xl p-1 sm:p-1.5 rounded-[1.9rem] sm:rounded-[2.4rem] bg-[#161616] border border-white/15 overflow-hidden">
+                  <div className="rounded-[1.6rem] sm:rounded-[2.1rem] overflow-hidden bg-black">
                     <img src={imgMobileLiveActivity} alt="iOS Live Activity" className="w-full h-auto" />
                   </div>
                 </div>
@@ -660,55 +660,55 @@ const App = () => {
         {/* Subtle background ambient glow */}
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#ff4a23]/5 rounded-full blur-[140px] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto relative">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="max-w-7xl mx-auto relative w-full overflow-hidden sm:overflow-visible">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center w-full min-w-0">
             {/* Left Column: Copy & Feature Highlights */}
-            <div className="lg:col-span-6">
+            <div className="lg:col-span-6 w-full min-w-0">
               <FadeIn>
                 <div className="inline-flex items-center gap-2 text-[#ff4a23] font-black tracking-[0.3em] text-[10px] uppercase mb-6">
                   <Activity className="w-4 h-4" /> Real-Time Intelligence
                 </div>
-                <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-8 leading-[0.9] tracking-tighter uppercase italic">
+                <h2 className="text-3xl sm:text-5xl md:text-6xl font-black mb-6 sm:mb-8 leading-[0.95] sm:leading-[0.9] tracking-tighter uppercase italic">
                   PRODUCTION <br />
                   <span className="text-[#ff4a23]">ANALYTICS.</span>
                 </h2>
-                <p className="text-gray-400 text-lg leading-relaxed font-medium mb-12">
+                <p className="text-gray-400 text-base sm:text-lg leading-relaxed font-medium mb-8 sm:mb-12">
                   Track schedule velocity scene-by-scene, eliminate hidden overtime before wrap, and grade daily shoot efficiency with automated metrics.
                 </p>
               </FadeIn>
 
-              <div className="space-y-8">
-                <FadeIn delay={150} className="flex gap-6 items-start">
-                  <div className="w-12 h-12 rounded-2xl bg-[#161616] border border-white/10 flex items-center justify-center shrink-0 text-[#ff4a23] shadow-lg">
-                    <BarChart3 className="w-5 h-5" />
+              <div className="space-y-6 sm:space-y-8">
+                <FadeIn delay={150} className="flex gap-4 sm:gap-6 items-start">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#161616] border border-white/10 flex items-center justify-center shrink-0 text-[#ff4a23] shadow-lg">
+                    <BarChart3 className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
-                  <div>
-                    <h5 className="text-xl font-black mb-1.5 uppercase tracking-tighter italic">Daily Scorecard & Grading</h5>
-                    <p className="text-gray-400 text-sm leading-relaxed font-medium">
+                  <div className="min-w-0">
+                    <h5 className="text-lg sm:text-xl font-black mb-1 sm:mb-1.5 uppercase tracking-tighter italic">Daily Scorecard & Grading</h5>
+                    <p className="text-gray-400 text-xs sm:text-sm leading-relaxed font-medium">
                       An objective 0–100 production score that grades completion rates, scene variance, and overall pace momentum as scenes wrap.
                     </p>
                   </div>
                 </FadeIn>
 
-                <FadeIn delay={300} className="flex gap-6 items-start">
-                  <div className="w-12 h-12 rounded-2xl bg-[#161616] border border-white/10 flex items-center justify-center shrink-0 text-[#ff4a23] shadow-lg">
-                    <TrendingUp className="w-5 h-5" />
+                <FadeIn delay={300} className="flex gap-4 sm:gap-6 items-start">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#161616] border border-white/10 flex items-center justify-center shrink-0 text-[#ff4a23] shadow-lg">
+                    <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
-                  <div>
-                    <h5 className="text-xl font-black mb-1.5 uppercase tracking-tighter italic">Schedule Pace Trajectory</h5>
-                    <p className="text-gray-400 text-sm leading-relaxed font-medium">
+                  <div className="min-w-0">
+                    <h5 className="text-lg sm:text-xl font-black mb-1 sm:mb-1.5 uppercase tracking-tighter italic">Schedule Pace Trajectory</h5>
+                    <p className="text-gray-400 text-xs sm:text-sm leading-relaxed font-medium">
                       Visual velocity curve detailing whether each scene gained or lost time against the estimate, highlighting exact bottle-necks instantly.
                     </p>
                   </div>
                 </FadeIn>
 
-                <FadeIn delay={450} className="flex gap-6 items-start">
-                  <div className="w-12 h-12 rounded-2xl bg-[#161616] border border-white/10 flex items-center justify-center shrink-0 text-[#ff4a23] shadow-lg">
-                    <Clock className="w-5 h-5" />
+                <FadeIn delay={450} className="flex gap-4 sm:gap-6 items-start">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#161616] border border-white/10 flex items-center justify-center shrink-0 text-[#ff4a23] shadow-lg">
+                    <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
-                  <div>
-                    <h5 className="text-xl font-black mb-1.5 uppercase tracking-tighter italic">Setup vs. Filming Breakdown</h5>
-                    <p className="text-gray-400 text-sm leading-relaxed font-medium">
+                  <div className="min-w-0">
+                    <h5 className="text-lg sm:text-xl font-black mb-1 sm:mb-1.5 uppercase tracking-tighter italic">Setup vs. Filming Breakdown</h5>
+                    <p className="text-gray-400 text-xs sm:text-sm leading-relaxed font-medium">
                       Differentiate camera setup and relocation duration from active roll time, giving production heads actionable operational clarity.
                     </p>
                   </div>
@@ -717,12 +717,12 @@ const App = () => {
             </div>
 
             {/* Right Column: Dual iPhone Showcase */}
-            <div className="lg:col-span-6">
-              <div className="flex sm:grid sm:grid-cols-2 gap-5 sm:gap-8 max-w-xl mx-auto lg:max-w-none overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory no-scrollbar pb-4 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
+            <div className="lg:col-span-6 w-full min-w-0">
+              <div className="flex sm:grid sm:grid-cols-2 gap-4 sm:gap-8 max-w-xl mx-auto lg:max-w-none overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory no-scrollbar pb-4 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
                 {/* Scorecard Phone */}
-                <FadeIn delay={200} className="flex flex-col group shrink-0 w-[78vw] max-w-[280px] sm:w-auto sm:max-w-none snap-center">
-                  <div className="relative bg-[#161616] p-1 sm:p-1.5 rounded-[2.2rem] sm:rounded-[2.4rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] group-hover:border-[#ff4a23]/50 group-hover:shadow-[0_20px_60px_rgba(255,74,35,0.18)] transition-all duration-500 transform group-hover:-translate-y-2">
-                    <div className="relative rounded-[1.9rem] sm:rounded-[2.1rem] overflow-hidden bg-black aspect-[1206/2622]">
+                <FadeIn delay={200} className="flex flex-col group shrink-0 w-[60vw] max-w-[210px] sm:w-auto sm:max-w-[240px] md:max-w-[260px] lg:max-w-none snap-start">
+                  <div className="relative bg-[#161616] p-1 sm:p-1.5 rounded-[1.8rem] sm:rounded-[2.4rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] group-hover:border-[#ff4a23]/50 group-hover:shadow-[0_20px_60px_rgba(255,74,35,0.18)] transition-all duration-500 transform group-hover:-translate-y-2">
+                    <div className="relative rounded-[1.5rem] sm:rounded-[2.1rem] overflow-hidden bg-black aspect-[1206/2622]">
                       <img
                         src={imgMobileProductionAnalytics}
                         alt="Mobile Production Analytics Scorecard"
@@ -732,11 +732,11 @@ const App = () => {
                       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
                   </div>
-                  <div className="mt-5 px-2">
+                  <div className="mt-4 px-1">
                     <span className="text-[#ff4a23] font-black text-[10px] uppercase tracking-[0.25em] block mb-1">
                       01 / SCORECARD
                     </span>
-                    <h4 className="text-white font-black text-lg uppercase tracking-tighter italic mb-1">
+                    <h4 className="text-white font-black text-base sm:text-lg uppercase tracking-tighter italic mb-1">
                       Day Performance Grade
                     </h4>
                     <p className="text-gray-400 text-xs leading-relaxed font-medium">
@@ -746,9 +746,9 @@ const App = () => {
                 </FadeIn>
 
                 {/* Pace Timeline Phone */}
-                <FadeIn delay={350} className="flex flex-col group shrink-0 w-[78vw] max-w-[280px] sm:w-auto sm:max-w-none snap-center sm:pt-8 lg:pt-12">
-                  <div className="relative bg-[#161616] p-1 sm:p-1.5 rounded-[2.2rem] sm:rounded-[2.4rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] group-hover:border-[#ff4a23]/50 group-hover:shadow-[0_20px_60px_rgba(255,74,35,0.18)] transition-all duration-500 transform group-hover:-translate-y-2">
-                    <div className="relative rounded-[1.9rem] sm:rounded-[2.1rem] overflow-hidden bg-black aspect-[1206/2622]">
+                <FadeIn delay={350} className="flex flex-col group shrink-0 w-[60vw] max-w-[210px] sm:w-auto sm:max-w-[240px] md:max-w-[260px] lg:max-w-none snap-start sm:pt-8 lg:pt-12">
+                  <div className="relative bg-[#161616] p-1 sm:p-1.5 rounded-[1.8rem] sm:rounded-[2.4rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] group-hover:border-[#ff4a23]/50 group-hover:shadow-[0_20px_60px_rgba(255,74,35,0.18)] transition-all duration-500 transform group-hover:-translate-y-2">
+                    <div className="relative rounded-[1.5rem] sm:rounded-[2.1rem] overflow-hidden bg-black aspect-[1206/2622]">
                       <img
                         src={imgMobileProductionAnalyticsTimeline}
                         alt="Mobile Production Analytics Schedule Pace Timeline"
@@ -758,11 +758,11 @@ const App = () => {
                       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
                   </div>
-                  <div className="mt-5 px-2">
+                  <div className="mt-4 px-1">
                     <span className="text-[#ff4a23] font-black text-[10px] uppercase tracking-[0.25em] block mb-1">
                       02 / TRAJECTORY
                     </span>
-                    <h4 className="text-white font-black text-lg uppercase tracking-tighter italic mb-1">
+                    <h4 className="text-white font-black text-base sm:text-lg uppercase tracking-tighter italic mb-1">
                       Pace Momentum Curve
                     </h4>
                     <p className="text-gray-400 text-xs leading-relaxed font-medium">
@@ -770,11 +770,14 @@ const App = () => {
                     </p>
                   </div>
                 </FadeIn>
+
+                {/* Trailing Spacer to ensure the 2nd card fully scrolls into view on mobile */}
+                <div className="shrink-0 w-6 sm:hidden" aria-hidden="true" />
               </div>
 
               {/* Mobile Swipe Hint */}
               <div className="flex sm:hidden justify-center items-center gap-1.5 mt-3 text-[10px] font-black uppercase tracking-widest text-gray-500">
-                <span>Swipe</span>
+                <span>Swipe for pace trajectory</span>
                 <span className="text-[#ff4a23]">→</span>
               </div>
             </div>
@@ -829,8 +832,8 @@ const App = () => {
 
           {/* Mobile App Grid - Horizontal Snap Carousel on Mobile */}
           {galleryTab === 'mobile' && (
-            <div>
-              <div className="flex lg:grid lg:grid-cols-4 gap-5 lg:gap-8 overflow-x-auto lg:overflow-x-visible snap-x snap-mandatory no-scrollbar pb-4 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0">
+            <div className="w-full min-w-0">
+              <div className="flex lg:grid lg:grid-cols-4 gap-4 lg:gap-8 overflow-x-auto lg:overflow-x-visible snap-x snap-mandatory no-scrollbar pb-4 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0">
                 {[
                   {
                     tag: "01 / PRODUCTIONS",
@@ -861,9 +864,9 @@ const App = () => {
                     alt: "Mobile Message Board"
                   }
                 ].map((item, idx) => (
-                  <FadeIn key={item.title} delay={100 + idx * 75} className="flex flex-col group shrink-0 w-[78vw] max-w-[285px] lg:w-auto lg:max-w-none snap-center">
-                    <div className="relative bg-[#161616] p-1 sm:p-1.5 rounded-[2.2rem] sm:rounded-[2.4rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] group-hover:border-[#ff4a23]/50 group-hover:shadow-[0_20px_60px_rgba(255,74,35,0.18)] transition-all duration-500 transform group-hover:-translate-y-2">
-                      <div className="relative rounded-[1.9rem] sm:rounded-[2.1rem] overflow-hidden bg-black aspect-[1206/2622]">
+                  <FadeIn key={item.title} delay={100 + idx * 75} className="flex flex-col group shrink-0 w-[60vw] max-w-[210px] sm:w-[45vw] sm:max-w-[230px] lg:w-auto lg:max-w-none snap-start">
+                    <div className="relative bg-[#161616] p-1 sm:p-1.5 rounded-[1.8rem] sm:rounded-[2.4rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] group-hover:border-[#ff4a23]/50 group-hover:shadow-[0_20px_60px_rgba(255,74,35,0.18)] transition-all duration-500 transform group-hover:-translate-y-2">
+                      <div className="relative rounded-[1.5rem] sm:rounded-[2.1rem] overflow-hidden bg-black aspect-[1206/2622]">
                         <img
                           src={item.img}
                           alt={item.alt}
@@ -873,11 +876,11 @@ const App = () => {
                         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
                     </div>
-                    <div className="mt-5 px-2">
+                    <div className="mt-4 px-1">
                       <span className="text-[#ff4a23] font-black text-[10px] uppercase tracking-[0.25em] block mb-1">
                         {item.tag}
                       </span>
-                      <h4 className="text-white font-black text-lg uppercase tracking-tighter italic mb-1">
+                      <h4 className="text-white font-black text-base sm:text-lg uppercase tracking-tighter italic mb-1">
                         {item.title}
                       </h4>
                       <p className="text-gray-400 text-xs leading-relaxed font-medium">
@@ -886,6 +889,8 @@ const App = () => {
                     </div>
                   </FadeIn>
                 ))}
+                {/* Trailing Spacer */}
+                <div className="shrink-0 w-6 lg:hidden" aria-hidden="true" />
               </div>
               {/* Mobile Swipe Hint */}
               <div className="flex lg:hidden justify-center items-center gap-1.5 mt-3 text-[10px] font-black uppercase tracking-widest text-gray-500">
@@ -897,8 +902,8 @@ const App = () => {
 
           {/* Web Command Grid */}
           {galleryTab === 'web' && (
-            <div>
-              <div className="flex lg:grid lg:grid-cols-3 gap-5 lg:gap-8 items-start overflow-x-auto lg:overflow-x-visible snap-x snap-mandatory no-scrollbar pb-4 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0">
+            <div className="w-full min-w-0">
+              <div className="flex lg:grid lg:grid-cols-3 gap-4 lg:gap-8 items-start overflow-x-auto lg:overflow-x-visible snap-x snap-mandatory no-scrollbar pb-4 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0">
                 {[
                   {
                     tag: "01 / EDITOR",
@@ -922,7 +927,7 @@ const App = () => {
                     alt: "Web Stripboard"
                   }
                 ].map((item, idx) => (
-                  <FadeIn key={item.title} delay={100 + idx * 100} className="flex flex-col group shrink-0 w-[84vw] max-w-[340px] lg:w-auto lg:max-w-none snap-center">
+                  <FadeIn key={item.title} delay={100 + idx * 100} className="flex flex-col group shrink-0 w-[74vw] max-w-[290px] sm:max-w-[320px] lg:w-auto lg:max-w-none snap-start">
                     <div className="bg-[#141414] rounded-2xl border border-white/10 overflow-hidden shadow-2xl group-hover:border-[#ff4a23]/50 group-hover:shadow-[0_20px_50px_rgba(255,74,35,0.15)] transition-all duration-500 transform group-hover:-translate-y-1.5">
                       <img
                         src={item.img}
@@ -931,11 +936,11 @@ const App = () => {
                         loading="lazy"
                       />
                     </div>
-                    <div className="mt-5 px-2">
+                    <div className="mt-4 px-1">
                       <span className="text-[#ff4a23] font-black text-[10px] uppercase tracking-[0.25em] block mb-1">
                         {item.tag}
                       </span>
-                      <h4 className="text-white font-black text-lg uppercase tracking-tighter italic mb-1">
+                      <h4 className="text-white font-black text-base sm:text-lg uppercase tracking-tighter italic mb-1">
                         {item.title}
                       </h4>
                       <p className="text-gray-400 text-xs leading-relaxed font-medium">
@@ -944,6 +949,8 @@ const App = () => {
                     </div>
                   </FadeIn>
                 ))}
+                {/* Trailing Spacer */}
+                <div className="shrink-0 w-6 lg:hidden" aria-hidden="true" />
               </div>
               {/* Mobile Swipe Hint */}
               <div className="flex lg:hidden justify-center items-center gap-1.5 mt-3 text-[10px] font-black uppercase tracking-widest text-gray-500">
@@ -955,8 +962,8 @@ const App = () => {
 
           {/* WatchOS Grid */}
           {galleryTab === 'watch' && (
-            <div>
-              <div className="flex md:grid md:grid-cols-3 gap-6 md:gap-10 max-w-6xl mx-auto items-center overflow-x-auto md:overflow-x-visible snap-x snap-mandatory no-scrollbar pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
+            <div className="w-full min-w-0">
+              <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-10 max-w-6xl mx-auto items-center overflow-x-auto md:overflow-x-visible snap-x snap-mandatory no-scrollbar pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
                 {[
                   {
                     tag: "01 / LIVE GLANCE",
@@ -980,8 +987,8 @@ const App = () => {
                     alt: "Apple Watch Ultra Production Details"
                   }
                 ].map((item, idx) => (
-                  <FadeIn key={item.title} delay={100 + idx * 100} className="flex flex-col items-center text-center group shrink-0 w-[78vw] max-w-[280px] md:w-auto md:max-w-none snap-center">
-                    <div className="relative w-full max-w-[280px] sm:max-w-[320px] transition-transform duration-500 group-hover:-translate-y-2">
+                  <FadeIn key={item.title} delay={100 + idx * 100} className="flex flex-col items-center text-center group shrink-0 w-[62vw] max-w-[210px] sm:max-w-[240px] md:w-auto md:max-w-none snap-start">
+                    <div className="relative w-full max-w-[210px] sm:max-w-[250px] md:max-w-[320px] transition-transform duration-500 group-hover:-translate-y-2">
                       <div className="relative w-full aspect-[766/1106]">
                         <img
                           src={item.img}
@@ -991,11 +998,11 @@ const App = () => {
                         />
                       </div>
                     </div>
-                    <div className="mt-4 max-w-xs">
+                    <div className="mt-4 max-w-xs px-1">
                       <span className="text-[#ff4a23] font-black text-[10px] uppercase tracking-[0.25em] block mb-1">
                         {item.tag}
                       </span>
-                      <h4 className="text-white font-black text-lg uppercase tracking-tighter italic mb-1">
+                      <h4 className="text-white font-black text-base sm:text-lg uppercase tracking-tighter italic mb-1">
                         {item.title}
                       </h4>
                       <p className="text-gray-400 text-xs leading-relaxed font-medium">
@@ -1004,6 +1011,8 @@ const App = () => {
                     </div>
                   </FadeIn>
                 ))}
+                {/* Trailing Spacer */}
+                <div className="shrink-0 w-6 md:hidden" aria-hidden="true" />
               </div>
               {/* Mobile Swipe Hint */}
               <div className="flex md:hidden justify-center items-center gap-1.5 mt-3 text-[10px] font-black uppercase tracking-widest text-gray-500">
