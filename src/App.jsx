@@ -288,8 +288,10 @@ const App = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative h-[600vh] bg-white">
+      {/* Main Content Landmark for SEO & Accessibility */}
+      <main id="main-content">
+        {/* Hero Section */}
+        <section className="relative h-[600vh] bg-white">
         <div className="sticky top-0 h-[100dvh] flex flex-col items-center pt-[15vh] sm:pt-[20vh] 2xl:pt-[22vh] overflow-hidden bg-white">
           {/* Hero Copy */}
           <div
@@ -305,9 +307,10 @@ const App = () => {
               <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#ff4a23]"></span> Android</span>
               <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#ff4a23]"></span> Web</span>
             </div>
-            <h2 className="text-5xl sm:text-6xl md:text-[80px] lg:text-[100px] font-black tracking-tighter mb-4 sm:mb-6 leading-[0.85] uppercase italic px-2">
+            <h1 className="text-5xl sm:text-6xl md:text-[80px] lg:text-[100px] font-black tracking-tighter mb-4 sm:mb-6 leading-[0.85] uppercase italic px-2">
               GET YOUR <br /> SET <span className="text-[#ff4a23]">TOGETHER.</span>
-            </h2>
+              <span className="sr-only"> — SetShow: The Live Production Relay and Film Crew Scheduling Platform</span>
+            </h1>
             <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-xl mx-auto font-medium px-4">
               Bridge the gap between Production and Crew with the industry's first live production relay.
             </p>
@@ -981,6 +984,7 @@ const App = () => {
           )}
         </div>
       </section>
+      </main>
 
       {/* CTA Section */}
       <footer id="waitlist" className="py-40 px-6 bg-white relative z-30 overflow-hidden scroll-mt-24">

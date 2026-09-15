@@ -3,6 +3,11 @@ import { useEffect } from 'react';
 export const PrivacyPolicy = ({ onBack, onNavigate }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    const prevTitle = document.title;
+    document.title = "SetShow | Privacy Policy";
+    return () => {
+      document.title = prevTitle;
+    };
   }, []);
 
   return (

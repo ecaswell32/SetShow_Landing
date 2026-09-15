@@ -74,6 +74,11 @@ export const FAQ = ({ onBack, onNavigate }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    const prevTitle = document.title;
+    document.title = "SetShow | Frequently Asked Questions";
+    return () => {
+      document.title = prevTitle;
+    };
   }, []);
 
   const toggleItem = (key) => {
