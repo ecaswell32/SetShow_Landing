@@ -287,13 +287,25 @@ const App = () => {
             <a href="#workflow" className="hover:text-[#ff4a23] transition-colors">Workflow</a>
             <a href="#ecosystem" className="hover:text-[#ff4a23] transition-colors">Ecosystem</a>
             <a href="#analytics" className="hover:text-[#ff4a23] transition-colors">Analytics</a>
-            <a href="#waitlist" className="bg-[#0f0f0f] text-white px-7 py-2.5 rounded-full hover:bg-[#ff4a23] transition-all inline-block font-black tracking-wider">
-              JOIN WAITLIST
+            <a
+              href="https://apps.apple.com/us/app/setshow/id6759277260"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#0f0f0f] text-white px-6 py-2.5 rounded-full hover:bg-[#ff4a23] hover:scale-105 transition-all inline-flex items-center gap-2 font-black tracking-wider shadow-sm hover:shadow-[0_8px_25px_rgba(255,74,35,0.3)]"
+            >
+              <AppleLogo className="w-4 h-4 fill-white" />
+              <span>PRE-ORDER</span>
             </a>
           </div>
           <div className="flex md:hidden items-center gap-2">
-            <a href="#waitlist" className="bg-[#0f0f0f] text-white px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider hover:bg-[#ff4a23] transition-all">
-              Join Waitlist
+            <a
+              href="https://apps.apple.com/us/app/setshow/id6759277260"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#0f0f0f] text-white px-3.5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider hover:bg-[#ff4a23] transition-all inline-flex items-center gap-1.5"
+            >
+              <AppleLogo className="w-3.5 h-3.5 fill-white" />
+              <span>Pre-Order</span>
             </a>
           </div>
         </div>
@@ -1042,13 +1054,43 @@ const App = () => {
         <span id="join" className="sr-only" />
         <div className="max-w-7xl mx-auto text-center">
           <div className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-[#ff4a23]/10 text-[#ff4a23] text-[10px] sm:text-[11px] font-black uppercase tracking-[0.3em] mb-12">
-            <Zap size={15} /> EARLY ACCESS WAITLIST
+            <Zap size={15} /> APP STORE PRE-ORDER AVAILABLE NOW
           </div>
-          <h2 className="text-5xl sm:text-6xl md:text-[80px] lg:text-[100px] font-black tracking-tighter mb-16 leading-[0.85] uppercase italic text-[#0f0f0f]">
+          <h2 className="text-5xl sm:text-6xl md:text-[80px] lg:text-[100px] font-black tracking-tighter mb-12 sm:mb-16 leading-[0.85] uppercase italic text-[#0f0f0f]">
             JOIN THE <br /> <span className="text-[#ff4a23]">SHOW.</span>
           </h2>
+
+          {/* Primary Action: App Store Pre-Order */}
+          <div className="flex flex-col items-center justify-center gap-3 mb-16">
+            <a
+              href="https://apps.apple.com/us/app/setshow/id6759277260"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-4 px-8 sm:px-10 py-4 sm:py-5 rounded-2xl bg-[#0f0f0f] text-white hover:bg-[#ff4a23] hover:scale-105 transition-all duration-300 border border-black/10 shadow-2xl hover:shadow-[0_20px_45px_rgba(255,74,35,0.35)] select-none group"
+            >
+              <AppleLogo className="w-7 sm:w-8 h-7 sm:h-8 fill-white shrink-0 group-hover:scale-110 transition-transform" />
+              <div className="text-left flex flex-col">
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-gray-400 group-hover:text-white/80 transition-colors leading-none mb-1">Pre-Order Now on the</span>
+                <span className="text-xl sm:text-2xl font-black tracking-tight text-white leading-tight">Apple App Store</span>
+              </div>
+              <span className="ml-2 sm:ml-4 text-[9px] sm:text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-[#ff4a23] group-hover:bg-white text-white group-hover:text-[#ff4a23] transition-colors shadow-sm">
+                Pre-Order
+              </span>
+            </a>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">
+              Available for iPhone & Apple Watch
+            </p>
+          </div>
+
+          <div className="flex items-center justify-center gap-4 text-xs font-bold uppercase tracking-widest text-gray-400 max-w-sm mx-auto mb-10">
+            <span className="flex-1 h-px bg-gray-200"></span>
+            <span>Or Get Web & Production Updates</span>
+            <span className="flex-1 h-px bg-gray-200"></span>
+          </div>
+
+          {/* Secondary Action: Waitlist Form */}
           {isWaitlistSubmitted ? (
-            <div className="max-w-xl mx-auto mb-12 p-8 rounded-3xl bg-[#f7f6f4] border border-[#ff4a23]/20 flex flex-col items-center text-center animate-fade-in">
+            <div className="max-w-xl mx-auto mb-28 sm:mb-32 p-8 rounded-3xl bg-[#f7f6f4] border border-[#ff4a23]/20 flex flex-col items-center text-center animate-fade-in">
               <div className="w-14 h-14 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-4">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
@@ -1058,7 +1100,7 @@ const App = () => {
           ) : (
             <form
               onSubmit={handleWaitlistSubmit}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto mb-8"
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto mb-28 sm:mb-32"
             >
               <input
                 type="email"
@@ -1085,34 +1127,6 @@ const App = () => {
               </button>
             </form>
           )}
-
-          {/* Secondary Action: App Store Pre-Order (Inactive / Coming Soon) */}
-          <div className="flex flex-col items-center justify-center gap-3 mb-28 sm:mb-32">
-            <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">
-              <span className="w-8 h-px bg-gray-200"></span>
-              <span>Or</span>
-              <span className="w-8 h-px bg-gray-200"></span>
-            </div>
-
-            <div className="relative group inline-block">
-              <button
-                type="button"
-                disabled
-                aria-disabled="true"
-                className="inline-flex items-center gap-3.5 px-6 sm:px-7 py-3 sm:py-3.5 rounded-2xl bg-[#0f0f0f] text-white opacity-50 cursor-not-allowed border border-black/10 shadow-sm transition-all select-none"
-                title="App Store Pre-Order coming soon"
-              >
-                <AppleLogo className="w-6 h-6 fill-white shrink-0" />
-                <div className="text-left flex flex-col">
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-gray-400 leading-none">Pre-Order on the</span>
-                  <span className="text-base sm:text-lg font-black tracking-tight text-white leading-tight">App Store</span>
-                </div>
-                <span className="ml-2 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/10 text-white/80 border border-white/10">
-                  Coming Soon
-                </span>
-              </button>
-            </div>
-          </div>
           <div className="pt-20 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8 opacity-40">
             <div className="flex items-center gap-3">
               <img src={logoBlack} alt="SetShow Logo" className="h-8" />
